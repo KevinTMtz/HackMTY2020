@@ -11,7 +11,7 @@ const App: React.FC = () => (
   <BrowserRouter>
     <Header />
     <Switch>
-      <Route path="/" component={LoginPage} />
+      <Route path="/" exact component={LoginPage} />
       <Route path="/new/rect" component={RectLayout} />
       <Route path="/new/seat" component={SeatLayout} />
     </Switch>
