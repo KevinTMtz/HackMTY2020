@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import * as routes from "../constants/routes";
-import { auth, db } from "../firebase";
+import * as routes from '../constants/routes';
+import { auth, db } from '../firebase';
 
 const StyledTextField = styled.div`
   display: flex;
@@ -84,14 +84,11 @@ interface InterfaceState {
   password: string;
 }
 
-export class LoginPage extends React.Component<
-  InterfaceProps,
-  InterfaceState
-> {
+export class LoginPage extends React.Component<InterfaceProps, InterfaceState> {
   private static INITIAL_STATE = {
-    email: "",
+    email: '',
     error: null,
-    password: ""
+    password: '',
   };
 
   private static propKey(propertyName: string, value: any): object {
@@ -115,8 +112,8 @@ export class LoginPage extends React.Component<
         this.setState(() => ({ ...LoginPage.INITIAL_STATE }));
         history.push(routes.HOME);
       })
-      .catch(error => {
-        this.setState(LoginPage.propKey("error", error));
+      .catch((error) => {
+        this.setState(LoginPage.propKey('error', error));
       });
 
     event.preventDefault();
@@ -125,7 +122,7 @@ export class LoginPage extends React.Component<
   public render() {
     const { email, password, error } = this.state;
 
-    const isInvalid = password === "" || email === "";
+    const isInvalid = password === '' || email === '';
 
     return (
       <StyledTextField>
@@ -133,15 +130,28 @@ export class LoginPage extends React.Component<
           <h2>Welcome to Space Planner</h2>
           <br></br>
           <label>Email</label>
-          <input className="inputText" placeholder="email" id="emailInput"
-            onChange={event => this.setStateWithEvent(event, "email")}></input>
-          
+          <input
+            className="inputText"
+            placeholder="email"
+            id="emailInput"
+            onChange={(event) => this.setStateWithEvent(event, 'email')}
+          ></input>
+
           <label>Password</label>
-          <input type="password" className="inputText" placeholder="password" id="passwordInput"
-            onChange={event => this.setStateWithEvent(event, "password")}></input>
-          
-          <button type="submit" className="button" id="loginBtn">Sign In</button>
-          <button className="discreteButton" id="registerBtn">Sign Up</button>
+          <input
+            type="password"
+            className="inputText"
+            placeholder="password"
+            id="passwordInput"
+            onChange={(event) => this.setStateWithEvent(event, 'password')}
+          ></input>
+
+          <button type="submit" className="button" id="loginBtn">
+            Sign In
+          </button>
+          <button className="discreteButton" id="registerBtn">
+            Sign Up
+          </button>
         </form>
       </StyledTextField>
     );

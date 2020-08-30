@@ -1,9 +1,9 @@
-import { auth } from "./firebase";
+import { auth } from './firebase';
 
 // Sign Up
 export const doCreateUserWithEmailAndPassword = (
   email: string,
-  password: string
+  password: string,
 ) => auth.createUserWithEmailAndPassword(email, password);
 
 // Sign In
@@ -22,5 +22,5 @@ export const doPasswordUpdate = async (password: string) => {
   if (auth.currentUser) {
     await auth.currentUser.updatePassword(password);
   }
-  throw Error("No auth.currentUser!");
+  throw Error('No auth.currentUser!');
 };

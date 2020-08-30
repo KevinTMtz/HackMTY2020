@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import * as routes from "../constants/routes";
-import { auth, db } from "../firebase";
+import * as routes from '../constants/routes';
+import { auth, db } from '../firebase';
 
 const StyledTextField = styled.div`
   display: flex;
@@ -93,11 +93,11 @@ export class RegisterPage extends React.Component<
   InterfaceState
 > {
   private static INITIAL_STATE = {
-    email: "",
+    email: '',
     error: null,
-    passwordOne: "",
-    passwordTwo: "",
-    username: ""
+    passwordOne: '',
+    passwordTwo: '',
+    username: '',
   };
 
   private static propKey(propertyName: string, value: any): object {
@@ -118,20 +118,18 @@ export class RegisterPage extends React.Component<
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then((authUser: any) => {
-
         // Create a user in your own accessible Firebase Database too
         db.doCreateUser(authUser.user.uid, username, email)
           .then(() => {
-
             this.setState(() => ({ ...RegisterPage.INITIAL_STATE }));
             history.push(routes.HOME);
           })
-          .catch(error => {
-            this.setState(RegisterPage.propKey("error", error));
+          .catch((error) => {
+            this.setState(RegisterPage.propKey('error', error));
           });
       })
-      .catch(error => {
-        this.setState(RegisterPage.propKey("error", error));
+      .catch((error) => {
+        this.setState(RegisterPage.propKey('error', error));
       });
   }
 
@@ -140,9 +138,9 @@ export class RegisterPage extends React.Component<
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === "" ||
-      email === "" ||
-      username === "";
+      passwordOne === '' ||
+      email === '' ||
+      username === '';
 
     return (
       <StyledTextField>
@@ -150,24 +148,44 @@ export class RegisterPage extends React.Component<
           <h2>Register</h2>
           <br></br>
           <label>Email</label>
-          <input className="inputText" placeholder="email" id="emailInput"
-            onChange={event => this.setStateWithEvent(event, "email")}></input>
-          
+          <input
+            className="inputText"
+            placeholder="email"
+            id="emailInput"
+            onChange={(event) => this.setStateWithEvent(event, 'email')}
+          ></input>
+
           <label>Password</label>
-          <input type="password" className="inputText" placeholder="password" id="passwordInput"
-            onChange={event => this.setStateWithEvent(event, "passwordOne")}></input>
-          <input type="password" className="inputText" placeholder="confirm password" id="passwordInput"
-            onChange={event => this.setStateWithEvent(event, "passwordTwo")}></input>
-          
-          <button type="submit" className="button" id="loginBtn">Sign Up</button>
-          <button className="discreteButton" id="registerBtn">Cancel</button>
+          <input
+            type="password"
+            className="inputText"
+            placeholder="password"
+            id="passwordInput"
+            onChange={(event) => this.setStateWithEvent(event, 'passwordOne')}
+          ></input>
+          <input
+            type="password"
+            className="inputText"
+            placeholder="confirm password"
+            id="passwordInput"
+            onChange={(event) => this.setStateWithEvent(event, 'passwordTwo')}
+          ></input>
+
+          <button type="submit" className="button" id="loginBtn">
+            Sign Up
+          </button>
+          <button className="discreteButton" id="registerBtn">
+            Cancel
+          </button>
         </form>
       </StyledTextField>
     );
   }
 
   private setStateWithEvent(event: any, columnType: string) {
-    this.setState(RegisterPage.propKey(columnType, (event.target as any).value));
+    this.setState(
+      RegisterPage.propKey(columnType, (event.target as any).value),
+    );
   }
 }
 

@@ -1,6 +1,6 @@
-import * as React from "react";
-import { firebase } from "../firebase";
-import { AuthUserContext } from "./AuthUserContext";
+import * as React from 'react';
+import { firebase } from '../firebase';
+import { AuthUserContext } from './AuthUserContext';
 
 interface InterfaceProps {
   authUser?: any;
@@ -19,12 +19,12 @@ export const withAuthentication = (Component: any) => {
       super(props);
 
       this.state = {
-        authUser: null
+        authUser: null,
       };
     }
 
     public componentDidMount() {
-      firebase.auth.onAuthStateChanged(authUser => {
+      firebase.auth.onAuthStateChanged((authUser) => {
         authUser
           ? this.setState(() => ({ authUser }))
           : this.setState(() => ({ authUser: null }));
