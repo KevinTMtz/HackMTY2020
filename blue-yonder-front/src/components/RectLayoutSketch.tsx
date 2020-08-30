@@ -4,6 +4,8 @@ import styled from '@emotion/styled';
 
 const StyledSvg = styled.svg`
   margin: 0px 20px;
+  height: 70vh;
+  width: auto;
 `;
 
 interface RectLayoutInputsProps {
