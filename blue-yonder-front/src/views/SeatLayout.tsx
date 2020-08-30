@@ -22,7 +22,7 @@ const SeatLayout: React.FC = () => {
 
   return (
     <div>
-      <StyledH1>SeatLayout</StyledH1>
+      <StyledH1>Static Layout</StyledH1>
       <Wrapper>
         <SeatLayoutInputs
           sketchParams={sketchParams}

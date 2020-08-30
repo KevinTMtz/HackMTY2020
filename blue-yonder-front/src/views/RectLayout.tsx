@@ -27,7 +27,7 @@ const RectLayout: React.FC = () => {
   });
   return (
     <div>
-      <StyledH1>RectLayout</StyledH1>
+      <StyledH1>Dynamic Layout</StyledH1>
       <Wrapper>
         <RectLayoutInputs
           sketchParams={sketchParams}
