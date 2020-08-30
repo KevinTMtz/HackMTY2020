@@ -1,9 +1,8 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import firebase from 'firebase';
 import { RectanglesSketchParams } from '../algorithms/rectPacking';
 import StyledNumberInput from '../components/StyledNumberInput';
-import styled from '@emotion/styled';
-import { auth, db } from '../firebase';
-import firebase from 'firebase';
 
 const StyledForm = styled.form`
   display: flex;
@@ -33,30 +32,20 @@ interface RectLayoutInputsProps {
 }
 
 const RectLayoutInputs: React.FC<RectLayoutInputsProps> = ({
-    sketchParams,
-    setSketchParams,
-  }) => {
-  
+  sketchParams,
+  setSketchParams,
+}) => {
   const handleChange = (prop: keyof RectanglesSketchParams) => (
-  event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setSketchParams({ ...sketchParams, [prop]: +event.target.value });
   };
 
-  function onSubmit (event: any) {
+  const onSubmit = (event: any) => {
     event.preventDefault();
-
-    const data = {
-      anchoLugar: sketchParams.widthPlace,
-      anchoMesa: sketchParams.widthTable,
-      largoLugar: sketchParams.heightPlace,
-      largoMesa: sketchParams.heightTable,
-      sanaDistancia: sketchParams.distanceBetween
-    }
-
     const db = firebase.firestore();
-    db.collection('table').doc().set(data);
-  }
+    db.collection('table').doc().set(sketchParams);
+  };
 
   return (
     <StyledForm onSubmit={(event) => onSubmit(event)}>

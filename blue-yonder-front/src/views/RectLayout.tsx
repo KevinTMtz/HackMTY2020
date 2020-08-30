@@ -51,9 +51,7 @@ const RectLayout: React.FC = () => {
     },
   });
 
-  const changeCheck = (side: 'top' | 'right' | 'bottom' | 'left') => (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const changeCheck = (side: 'top' | 'right' | 'bottom' | 'left') => () => {
     setSketchParams({
       ...sketchParams,
       walkOnSide: {
