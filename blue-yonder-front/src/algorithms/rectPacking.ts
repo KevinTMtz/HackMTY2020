@@ -1,6 +1,6 @@
 import ShelfPack from '@mapbox/shelf-pack';
 
-export interface DrawingParams {
+export interface RectanglesSketchParams {
   widthPlace: number;
   heightPlace: number;
   widthTable: number;
@@ -15,7 +15,9 @@ export interface Rectangle {
   h: number;
 }
 
-export const calcRectPacking = (params: DrawingParams): Rectangle[] => {
+export const calcRectPacking = (
+  params: RectanglesSketchParams,
+): Rectangle[] => {
   const widthRect = params.widthTable + params.distanceBetween;
   const heightRect = params.heightTable + params.distanceBetween;
   const numRects = Math.max(

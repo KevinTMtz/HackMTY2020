@@ -1,8 +1,8 @@
 import React from 'react';
-import { DrawingParams, Rectangle } from '../algorithms/rectPacking';
+import { RectanglesSketchParams, Rectangle } from '../algorithms/rectPacking';
 
 interface RectLayoutInputsProps {
-  drawingParams: DrawingParams;
+  drawingParams: RectanglesSketchParams;
   rects: Rectangle[];
 }
 
@@ -22,7 +22,19 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
       />
       {rects.map((table, i) => (
         <rect
-          key={i}
+          key={i + '-area'}
+          x={table.x}
+          y={table.y}
+          width={table.w}
+          height={table.h}
+          rx={dist}
+          ry={dist}
+          fill="purple"
+        />
+      ))}
+      {rects.map((table, i) => (
+        <rect
+          key={i + '-table'}
           x={table.x + dist}
           y={table.y + dist}
           width={table.w - 2 * dist}
