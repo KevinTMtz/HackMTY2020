@@ -1,7 +1,7 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import { SeatsSketchParams } from '../algorithms/seatPacking';
 import StyledNumberInput from '../components/StyledNumberInput';
-import styled from '@emotion/styled';
 
 const StyledForm = styled.form`
   display: flex;
@@ -40,16 +40,10 @@ const SeatLayoutInputs: React.FC<SeatLayoutInputsProps> = ({
         onChange={handleChange('heightSeats')}
       />
       <StyledNumberInput
-        title="Tamaño de un asiento"
-        unit="m"
-        value={sketchParams.seatSize}
-        onChange={handleChange('seatSize')}
-      />
-      <StyledNumberInput
-        title="Sana distancia"
-        unit="m"
-        value={sketchParams.distanceBetween}
-        onChange={handleChange('distanceBetween')}
+        title="Capacidad"
+        unit="%"
+        value={sketchParams.capacity}
+        onChange={handleChange('capacity')}
       />
     </StyledForm>
   );
