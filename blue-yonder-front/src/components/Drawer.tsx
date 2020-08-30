@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -8,38 +8,45 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Home from '@material-ui/icons/Home';
 import { Link } from 'react-router-dom';
+import { css, jsx } from '@emotion/core';
 
 const useStyles = makeStyles({
   list: {
     width: 250,
     backgroundColor: 'black',
-    height: '100%',
+    height: '100%'
   },
   fullList: {
     width: 'auto',
-    backgroundColor: 'black',
+    backgroundColor: 'black'
   },
   listItem: {
     backgroundColor: 'black',
     '&:hover': {
-      backgroundColor: '#2A2828',
+      backgroundColor: '#2A2828'
     },
     '&:first-child': {
-      marginTop: '50px',
+      marginTop: '50px'
     },
   },
   menuBttn: {
     width: '100%',
-    padding: ' 15px 0',
+    padding: '25px 0px',
     display: 'flex',
     flexDirection: 'row-reverse',
     alignItems: 'center',
     justifyContent: 'space-between',
     color: 'white',
-    textDecoration: 'none',
+    textDecoration: 'none'
+  },
+  menuMainBttn: {
+    color: 'white',
+    fontSize: 24,
+    marginLeft: '20px',
+    fontWeight: 'bold' 
   },
   icon: {
-    color: 'white',
+    color: 'white'
   },
 });
 
@@ -105,9 +112,8 @@ export default function TemporaryDrawer() {
     <div>
       {(['left'] as Anchor[]).map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button
-            onClick={toggleDrawer(anchor, true)}
-          >
+          <Button className={clsx(classes.menuMainBttn)}
+            onClick={toggleDrawer(anchor, true)}>
             Menu
           </Button>
           <Drawer
