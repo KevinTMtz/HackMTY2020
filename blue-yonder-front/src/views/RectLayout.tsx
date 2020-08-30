@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import firebase from 'firebase';
 import {
   calcRectPacking,
   RectanglesSketchParams,
@@ -50,6 +51,7 @@ const RectLayout: React.FC = () => {
       left: true,
     },
   });
+  const [id, setId] = useState<string>('');
 
   const changeCheck = (side: 'top' | 'right' | 'bottom' | 'left') => () => {
     setSketchParams({
@@ -60,11 +62,19 @@ const RectLayout: React.FC = () => {
       },
     });
   };
+
+  const saveLayout = async () => {
+    const db = firebase.firestore();
+    const newLayoutRef = db.collection('table').doc();
+    await newLayoutRef.set(sketchParams);
+    setId(newLayoutRef.id as string);
+  };
   return (
     <div>
-      <StyledH1>Dynamic Layout</StyledH1>
+      <StyledH1>Dynamic Layout{id && `: tu id es ${id}`}</StyledH1>
       <Wrapper>
         <RectLayoutInputs
+          saveLayout={saveLayout}
           sketchParams={sketchParams}
           setSketchParams={setSketchParams}
         />

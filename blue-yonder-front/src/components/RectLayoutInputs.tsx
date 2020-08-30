@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import firebase from 'firebase';
 import { RectanglesSketchParams } from '../algorithms/rectPacking';
@@ -27,11 +27,13 @@ const StyledForm = styled.form`
 `;
 
 interface RectLayoutInputsProps {
+  saveLayout: () => void;
   sketchParams: RectanglesSketchParams;
   setSketchParams: React.Dispatch<React.SetStateAction<RectanglesSketchParams>>;
 }
 
 const RectLayoutInputs: React.FC<RectLayoutInputsProps> = ({
+  saveLayout,
   sketchParams,
   setSketchParams,
 }) => {
@@ -40,15 +42,13 @@ const RectLayoutInputs: React.FC<RectLayoutInputsProps> = ({
   ) => {
     setSketchParams({ ...sketchParams, [prop]: +event.target.value });
   };
-
-  const onSubmit = (event: any) => {
-    event.preventDefault();
-    const db = firebase.firestore();
-    db.collection('table').doc().set(sketchParams);
-  };
-
   return (
-    <StyledForm onSubmit={(event) => onSubmit(event)}>
+    <StyledForm
+      onSubmit={(event: any) => {
+        event.preventDefault();
+        saveLayout();
+      }}
+    >
       <StyledNumberInput
         title="Ancho del lugar"
         unit="m"
