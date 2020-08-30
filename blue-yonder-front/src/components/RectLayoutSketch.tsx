@@ -23,7 +23,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
       <rect
         width={drawingParams.widthPlace}
         height={drawingParams.heightPlace}
-        fill="blue"
+        fill="#78909c"
       />
       {rects.map((table, i) => (
         <rect
@@ -34,7 +34,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
           height={table.h}
           rx={dist}
           ry={dist}
-          fill="purple"
+          fill="#66bb6a"
         />
       ))}
       {rects.map((table, i) => (
@@ -44,7 +44,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
           y={table.y + dist}
           width={table.w - 2 * dist}
           height={table.h - 2 * dist}
-          fill="red"
+          fill="#5d4037"
         />
       ))}
     </StyledSvg>
