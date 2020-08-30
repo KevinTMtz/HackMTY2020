@@ -8,8 +8,13 @@ import RectLayoutSketch from '../components/RectLayoutSketch';
 import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 30% 70%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledH1 = styled.h1`
+  width: 100%;
+  text-align: center;
 `;
 
 const RectLayout: React.FC = () => {
@@ -22,7 +27,7 @@ const RectLayout: React.FC = () => {
   });
   return (
     <div>
-      <h1>RectLayout</h1>
+      <StyledH1>RectLayout</StyledH1>
       <Wrapper>
         <RectLayoutInputs
           sketchParams={sketchParams}

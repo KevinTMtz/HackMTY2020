@@ -1,5 +1,10 @@
 import React from 'react';
 import { RectanglesSketchParams, Rectangle } from '../algorithms/rectPacking';
+import styled from '@emotion/styled';
+
+const StyledSvg = styled.svg`
+  margin: 0px 20px;
+`;
 
 interface RectLayoutInputsProps {
   drawingParams: RectanglesSketchParams;
@@ -12,7 +17,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
 }) => {
   const dist = drawingParams.distanceBetween / 2;
   return (
-    <svg
+    <StyledSvg
       viewBox={`0 0 ${drawingParams.widthPlace} ${drawingParams.heightPlace}`}
     >
       <rect
@@ -42,7 +47,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
           fill="red"
         />
       ))}
-    </svg>
+    </StyledSvg>
   );
 };
 
