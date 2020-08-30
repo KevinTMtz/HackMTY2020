@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import * as routes from '../constants/routes';
-import { auth, db } from '../firebase';
+import { auth } from '../firebase';
 import { Link } from 'react-router-dom';
 
 const StyledTextField = styled.div`
