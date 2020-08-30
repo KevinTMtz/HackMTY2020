@@ -13,10 +13,17 @@ const StyledForm = styled.form`
   flex-wrap: wrap;
 
   #submitButton {
-    border: 2px solid black;
+    border: 1px solid grey;
     background: none;
     border-radius: 10px;
     padding: 0px 10px;
+    transition: 0.25s;
+    font-weight: bold;
+  }
+
+  #submitButton:hover {
+    border: 2px solid black;
+    transform: scale(1.1);
   }
 `;
 
