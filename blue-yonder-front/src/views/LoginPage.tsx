@@ -156,7 +156,7 @@ export class LoginPage extends React.Component<InterfaceProps, InterfaceState> {
             Sign In
           </button>
           <button className="discreteButton" id="registerBtn">
-            <Link to="/new/register">Sign Up</Link>
+            <Link to="/register">Sign Up</Link>
           </button>
         </form>
       </StyledTextField>
