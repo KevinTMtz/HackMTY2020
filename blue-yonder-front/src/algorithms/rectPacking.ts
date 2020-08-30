@@ -6,6 +6,12 @@ export interface RectanglesSketchParams {
   widthTable: number;
   heightTable: number;
   distanceBetween: number;
+  walkOnSide: {
+    top: boolean;
+    right: boolean;
+    bottom: boolean;
+    left: boolean;
+  };
 }
 
 export interface Rectangle {
@@ -18,13 +24,19 @@ export interface Rectangle {
 export const calcRectPacking = (
   params: RectanglesSketchParams,
 ): Rectangle[] => {
+  const widthPlace =
+    params.widthPlace -
+    (params.walkOnSide.left ? params.distanceBetween : 0) -
+    (params.walkOnSide.right ? params.distanceBetween : 0);
+  const heightPlace =
+    params.heightPlace -
+    (params.walkOnSide.top ? params.distanceBetween : 0) -
+    (params.walkOnSide.bottom ? params.distanceBetween : 0);
   const widthRect = params.widthTable + params.distanceBetween;
   const heightRect = params.heightTable + params.distanceBetween;
   const numRects = Math.max(
-    Math.floor(params.widthPlace / widthRect) *
-      Math.floor(params.heightPlace / heightRect),
-    Math.floor(params.widthPlace / heightRect) *
-      Math.floor(params.heightPlace / widthRect),
+    Math.floor(widthPlace / widthRect) * Math.floor(heightPlace / heightRect),
+    Math.floor(widthPlace / heightRect) * Math.floor(heightPlace / widthRect),
   );
   const verticalRect = {
     w: widthRect,
@@ -40,13 +52,13 @@ export const calcRectPacking = (
     () => horizontalRect,
   );
   // Case 1: verticals first
-  const place1 = new ShelfPack(params.widthPlace, params.heightPlace);
+  const place1 = new ShelfPack(widthPlace, heightPlace);
   const rects1 = place1.pack(verticalRects.concat(horizontalRects));
   // Case 2: horizontal first
-  const place2 = new ShelfPack(params.widthPlace, params.heightPlace);
+  const place2 = new ShelfPack(widthPlace, heightPlace);
   const rects2 = place2.pack(horizontalRects.concat(verticalRects));
   // Case 3: alternating
-  const place3 = new ShelfPack(params.widthPlace, params.heightPlace);
+  const place3 = new ShelfPack(widthPlace, heightPlace);
   const rects3 = place3.pack(
     Array.from({ length: 2 * numRects }, (_, i) =>
       i % 2 === 0 ? verticalRect : horizontalRect,
