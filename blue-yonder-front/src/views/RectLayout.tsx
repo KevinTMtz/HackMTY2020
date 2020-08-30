@@ -43,7 +43,25 @@ const RectLayout: React.FC = () => {
     widthTable: 1,
     heightTable: 0.7,
     distanceBetween: 1.5,
+    walkOnSide: {
+      top: true,
+      right: true,
+      bottom: true,
+      left: true,
+    },
   });
+
+  const changeCheck = (side: 'top' | 'right' | 'bottom' | 'left') => (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSketchParams({
+      ...sketchParams,
+      walkOnSide: {
+        ...sketchParams.walkOnSide,
+        [side]: !sketchParams.walkOnSide[side],
+      },
+    });
+  };
   return (
     <div>
       <StyledH1>Dynamic Layout</StyledH1>
@@ -54,22 +72,42 @@ const RectLayout: React.FC = () => {
         />
         <div id="svgAndOptionDiv">
           <label>
-            <input type="checkbox" /> Top{' '}
+            <input
+              type="checkbox"
+              checked={sketchParams.walkOnSide.top}
+              onChange={changeCheck('top')}
+            />{' '}
+            Top{' '}
           </label>
           <div id="svgDiv">
             <label>
-              <input type="checkbox" /> Left{' '}
+              <input
+                type="checkbox"
+                checked={sketchParams.walkOnSide.left}
+                onChange={changeCheck('left')}
+              />{' '}
+              Left{' '}
             </label>
             <RectLayoutSketch
               sketchParams={sketchParams}
               rects={calcRectPacking(sketchParams)}
             />
             <label>
-              <input type="checkbox" /> Right{' '}
+              <input
+                type="checkbox"
+                checked={sketchParams.walkOnSide.right}
+                onChange={changeCheck('right')}
+              />{' '}
+              Right{' '}
             </label>
           </div>
           <label>
-            <input type="checkbox" /> Bottom{' '}
+            <input
+              type="checkbox"
+              checked={sketchParams.walkOnSide.bottom}
+              onChange={changeCheck('bottom')}
+            />{' '}
+            Bottom{' '}
           </label>
         </div>
       </Wrapper>
