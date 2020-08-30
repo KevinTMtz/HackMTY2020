@@ -128,11 +128,11 @@ export class RegisterPage extends React.Component<
         db.doCreateUser(authUser.user.uid, username, email)
           .then(() => {
             this.setState(() => ({ ...RegisterPage.INITIAL_STATE }));
-            history.push('/new/rect');
           })
           .catch((error) => {
             this.setState(RegisterPage.propKey('error', error));
           });
+        history.push('/new/rect');
       })
       .catch((error) => {
         this.setState(RegisterPage.propKey('error', error));
