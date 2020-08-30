@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 
 const StyledSvg = styled.svg`
   margin: 0px 20px;
-  height: 70vh;
-  width: auto;
+  max-height: 60vh;
+  flex-grow: 1;
 `;
 
 interface RectLayoutInputsProps {
@@ -25,7 +25,7 @@ const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
       <rect
         width={drawingParams.widthPlace}
         height={drawingParams.heightPlace}
-        fill="#78909c"
+        fill="#d1ccc0"
       />
       {rects.map((table, i) => (
         <rect
