@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import * as routes from '../constants/routes';
 import { auth, db } from '../firebase';
+import { Link } from 'react-router-dom';
 
 const StyledTextField = styled.div`
   display: flex;
@@ -127,7 +128,7 @@ export class RegisterPage extends React.Component<
         db.doCreateUser(authUser.user.uid, username, email)
           .then(() => {
             this.setState(() => ({ ...RegisterPage.INITIAL_STATE }));
-            history.push(routes.HOME);
+            history.push('/new/rect');
           })
           .catch((error) => {
             this.setState(RegisterPage.propKey('error', error));
@@ -180,7 +181,7 @@ export class RegisterPage extends React.Component<
             Sign Up
           </button>
           <button className="discreteButton" id="registerBtn">
-            Cancel
+            <Link to="/">Cancel</Link>
           </button>
         </form>
       </StyledTextField>

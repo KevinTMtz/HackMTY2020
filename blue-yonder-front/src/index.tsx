@@ -6,6 +6,7 @@ import RectLayout from './views/RectLayout';
 import SeatLayout from './views/SeatLayout';
 import './index.css';
 import Header from './components/Header';
+import RegisterPage from './views/RegisterPage';
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const App: React.FC = () => (
       <Route path="/" exact component={LoginPage} />
       <Route path="/new/rect" component={RectLayout} />
       <Route path="/new/seat" component={SeatLayout} />
+      <Route path="/new/register" component={RegisterPage} />
     </Switch>
   </BrowserRouter>
 );

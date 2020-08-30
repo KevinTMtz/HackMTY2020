@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import * as routes from '../constants/routes';
 import { auth, db } from '../firebase';
+import { Link } from 'react-router-dom';
 
 const StyledTextField = styled.div`
   display: flex;
@@ -115,7 +116,7 @@ export class LoginPage extends React.Component<InterfaceProps, InterfaceState> {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState(() => ({ ...LoginPage.INITIAL_STATE }));
-        history.push(routes.HOME);
+        history.push('/new/rect');
       })
       .catch((error) => {
         this.setState(LoginPage.propKey('error', error));
@@ -155,7 +156,7 @@ export class LoginPage extends React.Component<InterfaceProps, InterfaceState> {
             Sign In
           </button>
           <button className="discreteButton" id="registerBtn">
-            Sign Up
+            <Link to="/new/register">Sign Up</Link>
           </button>
         </form>
       </StyledTextField>
