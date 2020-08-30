@@ -22,7 +22,7 @@ const Header: React.FC = () => (
         color: 'white',
       }}
     >
-      [Nombre del projecto]
+      Space Planner
     </h1>
   </StyledHeader>
 );
