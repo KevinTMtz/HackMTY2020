@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import {
   calcRectPacking,
   RectanglesSketchParams,
 } from '../algorithms/rectPacking';
 import RectLayoutInputs from '../components/RectLayoutInputs';
 import RectLayoutSketch from '../components/RectLayoutSketch';
-import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
   display: flex;

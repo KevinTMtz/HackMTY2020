@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginPage from './views/LoginPage';
 import Layout from './views/Layout';
-import './index.css';
 import RegisterPage from './views/RegisterPage';
-
+import './index.css';
 
 const App: React.FC = () => (
   <BrowserRouter>

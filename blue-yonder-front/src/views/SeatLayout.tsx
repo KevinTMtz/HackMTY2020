@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import { SeatsSketchParams } from '../algorithms/seatPacking';
 import SeatLayoutInputs from '../components/SeatLayoutInputs';
-import styled from '@emotion/styled';
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,8 +17,7 @@ const SeatLayout: React.FC = () => {
   const [sketchParams, setSketchParams] = useState<SeatsSketchParams>({
     widthSeats: 20,
     heightSeats: 10,
-    seatSize: 1,
-    distanceBetween: 1.5,
+    capacity: 50,
   });
 
   return (
@@ -26,9 +25,9 @@ const SeatLayout: React.FC = () => {
       <StyledH1>SeatLayout</StyledH1>
       <Wrapper>
         <SeatLayoutInputs
-        sketchParams={sketchParams}
-        setSketchParams={setSketchParams}
-      />
+          sketchParams={sketchParams}
+          setSketchParams={setSketchParams}
+        />
       </Wrapper>
     </div>
   );
