@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { calcRectPacking, DrawingParams } from '../algorithms/rectPacking';
+import {
+  calcRectPacking,
+  RectanglesSketchParams,
+} from '../algorithms/rectPacking';
 import RectLayoutInputs from '../components/RectLayoutInputs';
 import RectLayoutSketch from '../components/RectLayoutSketch';
 import styled from '@emotion/styled';
@@ -10,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 const RectLayout: React.FC = () => {
-  const [drawingParams, setDrawingParams] = useState<DrawingParams>({
+  const [sketchParams, setSketchParams] = useState<RectanglesSketchParams>({
     widthPlace: 20,
     heightPlace: 10,
     widthTable: 1,
@@ -22,12 +25,12 @@ const RectLayout: React.FC = () => {
       <h1>RectLayout</h1>
       <Wrapper>
         <RectLayoutInputs
-          drawingParams={drawingParams}
-          setDrawingParams={setDrawingParams}
+          sketchParams={sketchParams}
+          setSketchParams={setSketchParams}
         />
         <RectLayoutSketch
-          drawingParams={drawingParams}
-          rects={calcRectPacking(drawingParams)}
+          drawingParams={sketchParams}
+          rects={calcRectPacking(sketchParams)}
         />
       </Wrapper>
     </div>

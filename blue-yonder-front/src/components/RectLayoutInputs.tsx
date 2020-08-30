@@ -1,55 +1,55 @@
 import React from 'react';
-import { DrawingParams } from '../algorithms/rectPacking';
+import { RectanglesSketchParams } from '../algorithms/rectPacking';
 import StyledNumberInput from '../components/StyledNumberInput';
 
 interface RectLayoutInputsProps {
-  drawingParams: DrawingParams;
-  setDrawingParams: React.Dispatch<React.SetStateAction<DrawingParams>>;
+  sketchParams: RectanglesSketchParams;
+  setSketchParams: React.Dispatch<React.SetStateAction<RectanglesSketchParams>>;
 }
 
 const RectLayoutInputs: React.FC<RectLayoutInputsProps> = ({
-  drawingParams,
-  setDrawingParams,
+  sketchParams,
+  setSketchParams,
 }) => {
-  const handleChange = (prop: keyof DrawingParams) => (
+  const handleChange = (prop: keyof RectanglesSketchParams) => (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setDrawingParams({ ...drawingParams, [prop]: +event.target.value });
+    setSketchParams({ ...sketchParams, [prop]: +event.target.value });
   };
   return (
     <form>
       <StyledNumberInput
         title="Ancho del lugar"
         unit="m"
-        value={drawingParams.widthPlace}
+        value={sketchParams.widthPlace}
         onChange={handleChange('widthPlace')}
       />
       <br />
       <StyledNumberInput
         title="Largo del lugar"
         unit="m"
-        value={drawingParams.heightPlace}
+        value={sketchParams.heightPlace}
         onChange={handleChange('heightPlace')}
       />
       <br />
       <StyledNumberInput
         title="Ancho de una mesa"
         unit="m"
-        value={drawingParams.widthTable}
+        value={sketchParams.widthTable}
         onChange={handleChange('widthTable')}
       />
       <br />
       <StyledNumberInput
         title="Largo de una mesa"
         unit="m"
-        value={drawingParams.heightTable}
+        value={sketchParams.heightTable}
         onChange={handleChange('heightTable')}
       />
       <br />
       <StyledNumberInput
         title="Sana distancia"
         unit="m"
-        value={drawingParams.distanceBetween}
+        value={sketchParams.distanceBetween}
         onChange={handleChange('distanceBetween')}
       />
     </form>
