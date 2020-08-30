@@ -53,15 +53,24 @@ const RectLayout: React.FC = () => {
           setSketchParams={setSketchParams}
         />
         <div id="svgAndOptionDiv">
-          <label><input type="checkbox"/> Top </label>
+          <label>
+            <input type="checkbox" /> Top{' '}
+          </label>
           <div id="svgDiv">
-            <label><input type="checkbox"/> Left </label>
+            <label>
+              <input type="checkbox" /> Left{' '}
+            </label>
             <RectLayoutSketch
-              drawingParams={sketchParams}
-              rects={calcRectPacking(sketchParams)}/>
-            <label><input type="checkbox"/> Right </label>
+              sketchParams={sketchParams}
+              rects={calcRectPacking(sketchParams)}
+            />
+            <label>
+              <input type="checkbox" /> Right{' '}
+            </label>
           </div>
-          <label><input type="checkbox"/> Bottom </label>
+          <label>
+            <input type="checkbox" /> Bottom{' '}
+          </label>
         </div>
       </Wrapper>
     </div>
