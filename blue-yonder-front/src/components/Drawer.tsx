@@ -73,11 +73,6 @@ export default function TemporaryDrawer() {
   };
   const itemsList = [
     {
-      text: 'Login',
-      icon: <Home />,
-      path: '/',
-    },
-    {
       text: 'Rect',
       icon: <Home />,
       path: '/new/rect',
@@ -86,6 +81,11 @@ export default function TemporaryDrawer() {
       text: 'Seat',
       icon: <Home />,
       path: '/new/seat',
+    },
+    {
+      text: 'Log out',
+      icon: <Home />,
+      path: '/',
     },
   ];
   const list = (anchor: Anchor) => (

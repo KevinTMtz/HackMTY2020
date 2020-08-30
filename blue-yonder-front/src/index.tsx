@@ -2,20 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import LoginPage from './views/LoginPage';
-import RectLayout from './views/RectLayout';
-import SeatLayout from './views/SeatLayout';
+import Layout from './views/Layout';
 import './index.css';
-import Header from './components/Header';
 import RegisterPage from './views/RegisterPage';
+
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <Header />
     <Switch>
       <Route path="/" exact component={LoginPage} />
-      <Route path="/new/rect" component={RectLayout} />
-      <Route path="/new/seat" component={SeatLayout} />
-      <Route path="/new/register" component={RegisterPage} />
+      <Route path="/new" component={Layout} />
+      <Route path="/register" component={RegisterPage} />
     </Switch>
   </BrowserRouter>
 );
