@@ -6,9 +6,11 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Home from '@material-ui/icons/Home';
+import EventSeat from '@material-ui/icons/EventSeat';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import { css, jsx } from '@emotion/core';
 
 const useStyles = makeStyles({
   list: {
@@ -41,9 +43,8 @@ const useStyles = makeStyles({
   },
   menuMainBttn: {
     color: 'white',
-    fontSize: 24,
-    marginLeft: '20px',
-    fontWeight: 'bold' 
+    fontSize: 40,
+    marginLeft: '20px'
   },
   icon: {
     color: 'white'
@@ -73,18 +74,18 @@ export default function TemporaryDrawer() {
   };
   const itemsList = [
     {
-      text: 'Rect',
-      icon: <Home />,
+      text: 'Dynamic',
+      icon: <ViewModuleIcon />,
       path: '/new/rect',
     },
     {
-      text: 'Seat',
-      icon: <Home />,
+      text: 'Static',
+      icon: <EventSeat />,
       path: '/new/seat',
     },
     {
       text: 'Log out',
-      icon: <Home />,
+      icon: <ExitToAppIcon />,
       path: '/',
     },
   ];
@@ -114,7 +115,7 @@ export default function TemporaryDrawer() {
         <React.Fragment key={anchor}>
           <Button className={clsx(classes.menuMainBttn)}
             onClick={toggleDrawer(anchor, true)}>
-            Menu
+            <MenuIcon/>
           </Button>
           <Drawer
             anchor={anchor}
