@@ -9,22 +9,22 @@ const StyledSvg = styled.svg`
 `;
 
 interface RectLayoutInputsProps {
-  drawingParams: RectanglesSketchParams;
+  sketchParams: RectanglesSketchParams;
   rects: Rectangle[];
 }
 
 const RectLayoutSketch: React.FC<RectLayoutInputsProps> = ({
-  drawingParams,
+  sketchParams,
   rects,
 }) => {
-  const dist = drawingParams.distanceBetween / 2;
+  const dist = sketchParams.distanceBetween / 2;
   return (
     <StyledSvg
-      viewBox={`0 0 ${drawingParams.widthPlace} ${drawingParams.heightPlace}`}
+      viewBox={`0 0 ${sketchParams.widthPlace} ${sketchParams.heightPlace}`}
     >
       <rect
-        width={drawingParams.widthPlace}
-        height={drawingParams.heightPlace}
+        width={sketchParams.widthPlace}
+        height={sketchParams.heightPlace}
         fill="#d1ccc0"
       />
       {rects.map((table, i) => (
